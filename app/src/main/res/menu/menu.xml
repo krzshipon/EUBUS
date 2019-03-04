@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Student Registration"
+        android:id="@+id/studentRegId" />
+
+    <item android:title="Admin Registration"
+        android:id="@+id/adminRegId" />
+
+    <item
+        android:id="@+id/studentViewId"
+        android:orderInCategory="300"
+        android:title="Student View"
+        app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/adminViewId"
+        android:orderInCategory="300"
+        android:title="Admin View"
+        app:showAsAction="always"></item>
+
+
+
+</menu>

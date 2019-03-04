@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Student Registration"
+        android:id="@+id/studentRegId" />
+
+    <item android:title="Admin Registration"
+        android:id="@+id/adminRegId" />
+
+
+    <item
+        android:id="@+id/findBusId"
+        android:orderInCategory="300"
+        android:title="Find Bus"
+        app:showAsAction="always">
+        <menu>
+
+            <item
+                android:id="@+id/route1Id"
+                android:title="Route - 01">
+                <menu>
+                    <item
+                        android:id="@+id/route1Bus1Id"
+                        android:title="Bus - 01"/>
+                    <item
+                        android:id="@+id/route1Bus2Id"
+                        android:title="Bus - 02"/>
+                    <item
+                        android:id="@+id/route1Bus3Id"
+                        android:title="Bus - 03"/>
+                    <item
+                        android:id="@+id/route1Bus4Id"
+                        android:title="Bus - 04"/>
+                    <item
+                        android:id="@+id/route1Bus5Id"
+                        android:title="Bus - 05"/>
+                </menu>
+            </item>
+
+            <item
+                android:id="@+id/route2Id"
+                android:title="Route - 02">
+                <menu>
+                    <item
+                        android:id="@+id/route2Bus1Id"
+                        android:title="Bus - 01"/>
+                    <item
+                        android:id="@+id/route2Bus2Id"
+                        android:title="Bus - 02"/>
+                    <item
+                        android:id="@+id/route2Bus3Id"
+                        android:title="Bus - 03"/>
+                    <item
+                        android:id="@+id/route2Bus4Id"
+                        android:title="Bus - 04"/>
+                    <item
+                        android:id="@+id/route2Bus5Id"
+                        android:title="Bus - 05"/>
+                </menu>
+            </item>
+
+            <item
+                android:id="@+id/route3Id"
+                android:title="Route - 03">
+                <menu>
+                    <item
+                        android:id="@+id/route3Bus1Id"
+                        android:title="Bus - 01"/>
+                    <item
+                        android:id="@+id/route3Bus2Id"
+                        android:title="Bus - 02"/>
+                    <item
+                        android:id="@+id/route3Bus3Id"
+                        android:title="Bus - 03"/>
+                    <item
+                        android:id="@+id/route3Bus4Id"
+                        android:title="Bus - 04"/>
+                    <item
+                        android:id="@+id/route3Bus5Id"
+                        android:title="Bus - 5"/>
+                </menu>
+            </item>
+
+            <item
+                android:id="@+id/route4Id"
+                android:title="Route - 04">
+                <menu>
+                    <item
+                        android:id="@+id/route4Bus1Id"
+                        android:title="Bus - 01"/>
+                    <item
+                        android:id="@+id/route4Bus2Id"
+                        android:title="Bus - 02"/>
+                    <item
+                        android:id="@+id/route4Bus3Id"
+                        android:title="Bus - 03"/>
+                    <item
+                        android:id="@+id/route4Bus4Id"
+                        android:title="Bus - 04"/>
+                    <item
+                        android:id="@+id/route4Bus5Id"
+                        android:title="Bus - 05"/>
+                </menu>
+            </item>
+
+            <item
+                android:id="@+id/route5Id"
+                android:title="Route - 05">
+                <menu>
+                    <item
+                        android:id="@+id/route5Bus1Id"
+                        android:title="Bus - 01"/>
+                    <item
+                        android:id="@+id/route5Bus2Id"
+                        android:title="Bus - 02"/>
+                    <item
+                        android:id="@+id/route5Bus3Id"
+                        android:title="Bus - 03"/>
+                    <item
+                        android:id="@+id/route5Bus4Id"
+                        android:title="Bus - 04"/>
+                    <item
+                        android:id="@+id/route5Bus5Id"
+                        android:title="Bus - 05"/>
+                </menu>
+            </item>
+
+        </menu>
+    </item>
+
+
+
+
+
+</menu>
