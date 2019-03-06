@@ -6,150 +6,192 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@color/blue">
 
-
-        <TextView
-            android:id="@+id/dateViewId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center"
-            android:text="Date"
-            android:textSize="25sp"
-            android:textStyle="bold|italic"
-            android:paddingTop="20dp"/>
-
-
-
-
-            <!--After date-->
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_weight=".1">
-
-
-
-                    <!--News-->
+            <!--Image View-->
         <LinearLayout
-            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_weight=".5"
-            android:layout_margin="5dp">
-            <TextView
-                android:id="@+id/newsViewId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|center"
-                android:paddingTop="20dp"
-                android:text="News"
-                android:textSize="25sp"
-                android:textStyle="bold|italic" />
-
-            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true">
-                <LinearLayout
-                    android:layout_height="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/layout_bg"
+            android:layout_margin="15dp">
+            <ViewFlipper
+                android:id="@+id/viewflipper"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:autoStart="true"
+                android:flipInterval="3000" >
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/picture1" />
+                <ImageView
                     android:layout_width="match_parent"
-                    android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|left"
-                    android:text="Revised Missed Exam Notice Fall 2019, E and T "
-                    android:textSize="15sp"
-                    android:paddingTop="20dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|left"
-                    android:text="Notice for 1st Installment of Spring 2019 Semester "
-                    android:textSize="15sp"
-                    android:paddingTop="20dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|left"
-                    android:text="Fees Payment of 1st Installment by Students at UCBL Booth in EU Plaza Area "
-                    android:textSize="15sp"
-                    android:paddingTop="20dp"/>
-                </LinearLayout>
-            </ScrollView>
+                    android:layout_height="match_parent"
+                    android:src="@drawable/picture2"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/picture3"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/picture4"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/picture5"/>
+            </ViewFlipper>
         </LinearLayout>
 
-
-
-                    <!--Events-->
-        <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_weight=".5"
-            android:layout_margin="5dp">
-
+                <!--Date View-->
             <TextView
-                android:id="@+id/eventsViewId"
+                android:id="@+id/dateViewId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center"
-                android:text="Events"
-                android:textSize="25sp"
+                android:text="Date"
+                android:textSize="15sp"
                 android:textStyle="bold|italic"
-                android:paddingTop="20dp"/>
+                android:paddingTop="15dp"
+                android:textColor="@color/white"/>
 
-            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
+
+
+                <!--After date-->
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight=".2">
+
+
+                        <!--News-->
+            <LinearLayout
                 android:layout_height="match_parent"
-                android:fillViewport="true">
-                <LinearLayout
-                    android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_weight=".5"
+                android:layout_margin="5dp">
+                <TextView
+                    android:id="@+id/newsViewId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:paddingTop="20dp"
+                    android:text="News"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic"
+                    android:textColor="@color/white"/>
+
+                <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+                    <LinearLayout
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|left"
+                        android:text="Revised Missed Exam Notice Fall 2019, E and T "
+                        android:textSize="15sp"
+                        android:paddingTop="20dp"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|left"
+                        android:text="Notice for 1st Installment of Spring 2019 Semester "
+                        android:textSize="15sp"
+                        android:paddingTop="20dp"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|left"
+                        android:text="Fees Payment of 1st Installment by Students at UCBL Booth in EU Plaza Area "
+                        android:textSize="15sp"
+                        android:paddingTop="20dp"
+                        android:textColor="@color/white"/>
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+
+
+                        <!--Events-->
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_weight=".5"
+                android:layout_margin="5dp">
+
                 <TextView
+                    android:id="@+id/eventsViewId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top|left"
-                    android:text="International Mother Language day observed at Eastern University "
-                    android:textSize="15sp"
-                    android:paddingTop="20dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|left"
-                    android:text="Workshop on Meditation held at Eastern University "
-                    android:textSize="15sp"
-                    android:paddingTop="20dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|left"
-                    android:text="Liaquat Hossain Moghul appointed Chairman of EU Trustee Board "
-                    android:textSize="15sp"
-                    android:paddingTop="20dp"/>
-                </LinearLayout>
-            </ScrollView>
+                    android:layout_gravity="top|center"
+                    android:text="Events"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic"
+                    android:paddingTop="20dp"
+                    android:textColor="@color/white"/>
+
+                <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+                    <LinearLayout
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|left"
+                        android:text="International Mother Language day observed at Eastern University "
+                        android:textSize="15sp"
+                        android:paddingTop="20dp"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|left"
+                        android:text="Workshop on Meditation held at Eastern University "
+                        android:textSize="15sp"
+                        android:paddingTop="20dp"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|left"
+                        android:text="Liaquat Hossain Moghul appointed Chairman of EU Trustee Board "
+                        android:textSize="15sp"
+                        android:paddingTop="20dp"
+                        android:textColor="@color/white"/>
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+
         </LinearLayout>
 
 
-    </LinearLayout>
 
+                    <!--Ad View-->
 
-
-                <!--Ad View-->
-
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_weight=".8"
-        android:layout_margin="5dp">
-
-    </LinearLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight=".6"
+            android:layout_margin="5dp">
+        </LinearLayout>
 
 
 </LinearLayout>
