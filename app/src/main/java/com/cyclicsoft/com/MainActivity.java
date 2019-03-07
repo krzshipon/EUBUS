@@ -1,6 +1,7 @@
 package com.cyclicsoft.com;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,21 +11,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView mDateView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         setContentView(R.layout.activity_main);
 
 
         mDateView = (TextView)findViewById(R.id.dateViewId);
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         mDateView.setText(currentDateTimeString);
+
     }
 
     @Override
@@ -44,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(id==R.id.adminViewId){
+            Intent adminViewIntent = new Intent(this,AdminActivity.class);
+            this.startActivity(adminViewIntent);
             return true;
         }
         if(id==R.id.studentRegId){
@@ -56,4 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
