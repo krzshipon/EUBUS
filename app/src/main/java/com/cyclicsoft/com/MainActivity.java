@@ -2,7 +2,10 @@ package com.cyclicsoft.com;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -26,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         setContentView(R.layout.activity_main);
 
 
         mDateView = (TextView)findViewById(R.id.dateViewId);
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         mDateView.setText(currentDateTimeString);
+
 
     }
 
@@ -63,9 +68,15 @@ public class MainActivity extends AppCompatActivity {
         if(id==R.id.adminRegId){
             return true;
         }
+        if(id==R.id.developerInfoId){
+            Intent adminViewIntent = new Intent(this,DeveloperInfoActivity.class);
+            this.startActivity(adminViewIntent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
 }

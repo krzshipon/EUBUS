@@ -1,5 +1,6 @@
 package com.cyclicsoft.com;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,6 +25,12 @@ public class AdminActivity extends AppCompatActivity {
         int id3 = item.getItemId();
 
         if(id3==R.id.adminActivityId){
+            return true;
+        }
+
+        if(id3==R.id.developerInfoId){
+            Intent adminViewIntent = new Intent(this,DeveloperInfoActivity.class);
+            this.startActivity(adminViewIntent);
             return true;
         }
 

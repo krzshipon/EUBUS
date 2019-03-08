@@ -4,6 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FindBusActivity">
+    tools:context=".FindBusActivity"
+    android:orientation="vertical"
+    android:background="@drawable/map"
+    android:gravity = "bottom" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="On duty:"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile Name"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:paddingTop="5dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01700-000000"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:paddingTop="5dp"/>
 
 </LinearLayout>
