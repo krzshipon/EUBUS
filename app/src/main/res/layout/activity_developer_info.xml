@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".DeveloperInfoActivity"
     android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@color/blue">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +17,8 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/admin_profile_pic" />
+            android:src="@drawable/musadulpic"
+            android:paddingTop="20dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,16 +36,18 @@
         android:background="@drawable/layout_bg"
         android:layout_margin="15dp"
         android:layout_weight=".5">
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/admin_profile_pic" />
+            android:src="@drawable/shiponpic"
+            android:paddingTop="20dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
             android:paddingTop="20dp"
-            android:text="KRZ Shipon\nBRAC University\nDept. of CSE\nE-mail:krzshipon@gmail.com"
+            android:text="KRZ Shipon\nBRAC University\nDept. of CSE\nE-mail:krz.shipon1@gmail.com"
             android:textSize="20sp"
             android:textStyle="bold|italic" />
 
