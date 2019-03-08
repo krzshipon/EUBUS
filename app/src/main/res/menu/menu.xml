@@ -3,10 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:title="Student Registration"
+        android:icon="@drawable/ic_touch_app_black_24dp"
         android:id="@+id/studentRegId" />
 
     <item android:title="Admin Registration"
         android:id="@+id/adminRegId" />
+
+    <item android:title="Developer Info"
+        android:id="@+id/developerInfoId" />
 
     <item
         android:id="@+id/studentViewId"
