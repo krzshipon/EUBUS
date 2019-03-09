@@ -16,7 +16,8 @@
         android:id="@+id/studentViewId"
         android:orderInCategory="300"
         android:title="Student View"
-        app:showAsAction="always"></item>
+        app:showAsAction="always"
+        android:background="@drawable/layout_bg"></item>
 
     <item
         android:id="@+id/adminViewId"

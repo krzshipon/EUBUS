@@ -54,7 +54,7 @@
                 android:text="Date"
                 android:textSize="15sp"
                 android:textStyle="bold|italic"
-                android:paddingTop="15dp"
+                android:paddingTop="5dp"
                 android:textColor="@color/white"/>
 
 
@@ -64,7 +64,8 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_weight=".3">
+            android:layout_weight=".3"
+            android:layout_margin="10dp">
 
 
                         <!--News-->
@@ -73,7 +74,8 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_weight=".5"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                android:background="@drawable/layout_bg2">
                 <TextView
                     android:id="@+id/newsViewId"
                     android:layout_width="wrap_content"
@@ -100,15 +102,15 @@
                         android:layout_gravity="top|left"
                         android:text="Revised Missed Exam Notice Fall 2019, E and T "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
-                        android:textColor="@color/white"/>
+                        android:layout_margin="10dp"
+                        android:textColor="@color/white" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|left"
                         android:text="Notice for 1st Installment of Spring 2019 Semester "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -116,10 +118,18 @@
                         android:layout_gravity="top|left"
                         android:text="Fees Payment of 1st Installment by Students at UCBL Booth in EU Plaza Area "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     </LinearLayout>
                 </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="5dp"
+                android:background="@color/white"
+                android:layout_gravity="center">
+
             </LinearLayout>
 
 
@@ -130,7 +140,8 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_weight=".5"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                android:background="@drawable/layout_bg2">
 
                 <TextView
                     android:id="@+id/eventsViewId"
@@ -157,7 +168,7 @@
                         android:layout_gravity="top|left"
                         android:text="International Mother Language day observed at Eastern University "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -165,7 +176,7 @@
                         android:layout_gravity="top|left"
                         android:text="Workshop on Meditation held at Eastern University "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -173,7 +184,7 @@
                         android:layout_gravity="top|left"
                         android:text="Liaquat Hossain Moghul appointed Chairman of EU Trustee Board "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     </LinearLayout>
                 </ScrollView>

@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView mDateView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +34,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        mDateView = (TextView)findViewById(R.id.dateViewId);
-        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-        mDateView.setText(currentDateTimeString);
+        Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mDateView = (TextView)findViewById(R.id.dateViewId);
+                                String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+                                mDateView.setText(currentDateTimeString);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        t.start();
+
+//        mDateView = (TextView)findViewById(R.id.dateViewId);
+//        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+//        mDateView.setText(currentDateTimeString);
 
 
     }
