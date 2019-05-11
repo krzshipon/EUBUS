@@ -1,27 +1,20 @@
-package com.cyclicsoft.com;
+package com.cyclicsoft.com.acitivity;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-import java.sql.Time;
+import com.cyclicsoft.com.R;
+
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-
+    Button adminRegBtn;
     TextView mDateView;
 
 
@@ -30,39 +23,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        setContentView(R.layout.activity_main);
-
-
-        Thread t = new Thread() {
-
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                mDateView = (TextView)findViewById(R.id.dateViewId);
-                                String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-                                mDateView.setText(currentDateTimeString);
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                }
-            }
-        };
-
-        t.start();
-
-//        mDateView = (TextView)findViewById(R.id.dateViewId);
-//        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-//        mDateView.setText(currentDateTimeString);
+        adminRegBtn = (Button)findViewById(R.id.adminRegBtn);
+//        Function for Date View
+//        Thread t = new Thread() {
+//
+//            @Override
+//            public void run() {
+//                try {
+//                    while (!isInterrupted()) {
+//                        Thread.sleep(1000);
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                mDateView = (TextView)findViewById(R.id.dateViewId);
+//                                String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+//                                mDateView.setText(currentDateTimeString);
+//                            }
+//                        });
+//                    }
+//                } catch (InterruptedException e) {
+//                }
+//            }
+//        };
+//        t.start();
 
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -90,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(id==R.id.adminRegId){
+            Intent adminRegIntent = new Intent(this,AdminRegActivity.class);
+            this.startActivity(adminRegIntent);
             return true;
         }
         if(id==R.id.developerInfoId){
@@ -100,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
