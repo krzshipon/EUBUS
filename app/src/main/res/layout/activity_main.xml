@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".acitivity.MainActivity"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@color/blue">
+    android:background="@color/blue"
+    android:id="@+id/rootLayout">
 
 
             <!--Image View-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:background="@drawable/layout_bg"
             android:layout_margin="15dp">
             <ViewFlipper
@@ -46,16 +47,26 @@
         </LinearLayout>
 
                 <!--Date View-->
-            <TextView
-                android:id="@+id/dateViewId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|center"
-                android:text="Date"
-                android:textSize="15sp"
-                android:textStyle="bold|italic"
-                android:paddingTop="15dp"
-                android:textColor="@color/white"/>
+            <!--<TextView-->
+                <!--android:id="@+id/dateViewId"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="top|center"-->
+                <!--android:text="Date"-->
+                <!--android:textSize="15sp"-->
+                <!--android:textStyle="bold|italic"-->
+                <!--android:paddingTop="5dp"-->
+                <!--android:textColor="@color/white"/>-->
+
+          <TextClock
+               android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:format12Hour="HH:mm:ss"
+              android:gravity="center"
+              android:textSize="15sp"
+              android:textStyle="bold|italic"
+              android:paddingTop="5dp"
+              android:textColor="@color/white"/>
 
 
 
@@ -64,7 +75,8 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_weight=".3">
+            android:layout_weight=".3"
+            android:layout_margin="10dp">
 
 
                         <!--News-->
@@ -73,15 +85,16 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_weight=".5"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                android:background="@drawable/layout_bg2">
                 <TextView
                     android:id="@+id/newsViewId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:paddingTop="20dp"
+                    android:paddingTop="5dp"
                     android:text="News"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold|italic"
                     android:textColor="@color/white"/>
 
@@ -100,15 +113,15 @@
                         android:layout_gravity="top|left"
                         android:text="Revised Missed Exam Notice Fall 2019, E and T "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
-                        android:textColor="@color/white"/>
+                        android:layout_margin="10dp"
+                        android:textColor="@color/white" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|left"
                         android:text="Notice for 1st Installment of Spring 2019 Semester "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -116,10 +129,18 @@
                         android:layout_gravity="top|left"
                         android:text="Fees Payment of 1st Installment by Students at UCBL Booth in EU Plaza Area "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     </LinearLayout>
                 </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="5dp"
+                android:background="@color/white"
+                android:layout_gravity="center">
+
             </LinearLayout>
 
 
@@ -130,7 +151,8 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_weight=".5"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                android:background="@drawable/layout_bg2">
 
                 <TextView
                     android:id="@+id/eventsViewId"
@@ -138,9 +160,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
                     android:text="Events"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold|italic"
-                    android:paddingTop="20dp"
+                    android:paddingTop="5dp"
                     android:textColor="@color/white"/>
 
                 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -157,7 +179,7 @@
                         android:layout_gravity="top|left"
                         android:text="International Mother Language day observed at Eastern University "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -165,7 +187,7 @@
                         android:layout_gravity="top|left"
                         android:text="Workshop on Meditation held at Eastern University "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -173,7 +195,7 @@
                         android:layout_gravity="top|left"
                         android:text="Liaquat Hossain Moghul appointed Chairman of EU Trustee Board "
                         android:textSize="15sp"
-                        android:paddingTop="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@color/white"/>
                     </LinearLayout>
                 </ScrollView>

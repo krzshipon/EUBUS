@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "627917262927",
+    "firebase_url": "https://eu-bus-80c05.firebaseio.com",
+    "project_id": "eu-bus-80c05",
+    "storage_bucket": "eu-bus-80c05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627917262927:android:4d2c2714fa064857",
+        "android_client_info": {
+          "package_name": "com.cyclicsoft.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627917262927-osv2a5aqpiopdrgbf8de378pk31buifn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cyclicsoft.com",
+            "certificate_hash": "bc80272882121b8357d911df40276da7793d13e3"
+          }
+        },
+        {
+          "client_id": "627917262927-k1krtk1l6v99t9vg3rvvsuu37nosrgpi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5aUYtQGxKTm38MQqpRa_p1p5CwcFoS3E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627917262927-k1krtk1l6v99t9vg3rvvsuu37nosrgpi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

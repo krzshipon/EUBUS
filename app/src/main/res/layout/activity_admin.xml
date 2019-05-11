@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity"
+    tools:context=".acitivity.AdminActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:id="@+id/adminLayout">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,23 +46,46 @@
         android:gravity="center|top"
         android:orientation="vertical">
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/edtMail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/adminPassID"
+            android:hint="E-mail"
+            android:text="" />
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Password"
-            android:layout_marginTop="80dp"
-            android:inputType="textPassword"
-            android:maxLength="10"
-            android:textSize="30sp"/>
+            android:text="" />
+        <!--<EditText-->
+            <!--android:layout_width="300dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/edtEmail"-->
+            <!--android:hint="E-mail"-->
+            <!--android:layout_marginTop="80dp"-->
+            <!--android:inputType="textEmailAddress"-->
+            <!--android:textSize="30sp"-->
+            <!--android:background="@drawable/btn_signin_background"/>-->
+        <!--<EditText-->
+            <!--android:layout_width="300dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/edtPassword"-->
+            <!--android:hint="Password"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:maxLength="10"-->
+            <!--android:textSize="30sp"-->
+            <!--android:background="@drawable/btn_signin_background"/>-->
 
         <Button
-            android:id="@+id/adminPassSubmitID"
+            android:id="@+id/adminSignInID"
             style="@android:style/Widget.Holo.Light.Button.Toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:hint="Submit"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:background="@drawable/btn_signin_background"/>
 
     </LinearLayout>
 
