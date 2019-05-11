@@ -1,8 +1,10 @@
-package com.cyclicsoft.com;
+package com.cyclicsoft.com.acitivity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.cyclicsoft.com.R;
 
 import java.util.Calendar;
 

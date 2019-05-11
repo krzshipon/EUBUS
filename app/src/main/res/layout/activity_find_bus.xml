@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FindBusActivity"
-    android:orientation="vertical"
-    android:background="@drawable/map"
-    android:gravity = "bottom" >
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="On duty:"
-        android:textColor="#000000"
-        android:textSize="20sp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile Name"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:paddingTop="5dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="01700-000000"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:paddingTop="5dp"/>
+    <fragment
+        android:layout_below="@+id/layout_panel"
+        android:id="@+id/map_frag_findbus"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".acitivity.FindBusActivity"/>
 
-</LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="10dp"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+            <com.github.glomadrian.materialanimatedswitch.MaterialAnimatedSwitch
+                android:id="@+id/fundbus_locationSwitch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                app:base_release_color="@color/blue"
+                app:base_press_color="@color/colorAccent"
+                app:ball_release_color="@color/colorPrimary"
+                app:ball_press_color="@color/colorPrimaryDark"
+                />
+            <!--app:icon_release="@drawable/ic_location_off_black_24dp"-->
+            <!--app:icon_press="@drawable/ic_location_on_black_24dp"-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/tv_find_user"-->
+                <!--android:text="Find User"-->
+                <!--android:layout_marginLeft="100dp"/>-->
+        </LinearLayout>
+
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

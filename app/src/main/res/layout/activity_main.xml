@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".acitivity.MainActivity"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@color/blue">
+    android:background="@color/blue"
+    android:id="@+id/rootLayout">
 
 
             <!--Image View-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:background="@drawable/layout_bg"
             android:layout_margin="15dp">
             <ViewFlipper
@@ -46,16 +47,26 @@
         </LinearLayout>
 
                 <!--Date View-->
-            <TextView
-                android:id="@+id/dateViewId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|center"
-                android:text="Date"
-                android:textSize="15sp"
-                android:textStyle="bold|italic"
-                android:paddingTop="5dp"
-                android:textColor="@color/white"/>
+            <!--<TextView-->
+                <!--android:id="@+id/dateViewId"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="top|center"-->
+                <!--android:text="Date"-->
+                <!--android:textSize="15sp"-->
+                <!--android:textStyle="bold|italic"-->
+                <!--android:paddingTop="5dp"-->
+                <!--android:textColor="@color/white"/>-->
+
+          <TextClock
+               android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:format12Hour="HH:mm:ss"
+              android:gravity="center"
+              android:textSize="15sp"
+              android:textStyle="bold|italic"
+              android:paddingTop="5dp"
+              android:textColor="@color/white"/>
 
 
 
@@ -81,9 +92,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:paddingTop="20dp"
+                    android:paddingTop="5dp"
                     android:text="News"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold|italic"
                     android:textColor="@color/white"/>
 
@@ -149,9 +160,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
                     android:text="Events"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold|italic"
-                    android:paddingTop="20dp"
+                    android:paddingTop="5dp"
                     android:textColor="@color/white"/>
 
                 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
