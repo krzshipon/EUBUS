@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.cyclicsoft.com.R;
 import com.cyclicsoft.com.common.Common;
+import com.cyclicsoft.com.model.Admin;
 import com.cyclicsoft.com.remote.IGoogleAPI;
 import com.cyclicsoft.com.service.LocationService;
 import com.cyclicsoft.com.settings.Constants;
@@ -72,13 +73,10 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
 
     private GoogleMap mMap;
 
-    private static final int MY_PERMISSION_REQUEST_CODE = 7000;
-    private static final int PLAY_SERVICE_RES_REQUEST = 7001;
-    private LocationRequest mLocationRequest;
-    private GoogleApiClient mGoogleApiClient;
-    private Location mLastLocation;
     String selectedBusUserId = Constants.route1bus1id;
+
     double lat ,lng ;
+
     private SupportMapFragment mapFragment;
     private MaterialAnimatedSwitch location_switch;
 //
@@ -98,7 +96,7 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
     private Handler handler;
     private LatLng startPosition, endPosition, currentPosition;
     private int index, next;
-    private TextView tv_finduser;
+    private TextView tvDriverContract;
     private EditText edtPlace;
     private String destination;
     private PolylineOptions polylineOptions, blackPolylineOptions;
@@ -106,34 +104,26 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
 
     private IGoogleAPI mService;
     FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+    private Admin admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_bus);
 
-
-
         initialize();
 
 
-
-
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_frag_findbus);
-        mapFragment.getMapAsync(this);
-//        Init View
-        location_switch = (MaterialAnimatedSwitch)findViewById(R.id.fundbus_locationSwitch);
 
         location_switch.setOnCheckedChangeListener(new MaterialAnimatedSwitch.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(boolean isOnline) {
                 if(isOnline){
-                    startLocationUpdates();
                     displayLocation();
                     Toast.makeText(getApplicationContext(),"You are online",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    stopLocationUpdates();
                     mCurrent.remove();
                     mMap.clear();
                     handler.removeCallbacks(drawPathRunnable);
@@ -141,27 +131,17 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
                 }
             }
         });
-        polyLineList = new ArrayList<>();
-        edtPlace = (EditText)findViewById(R.id.edtPlace);
-//        //Geo Fire
-        dbref = FirebaseDatabase.getInstance().getReference("Drivers");
-        geoFire = new GeoFire(dbref);
-        setUpLocation();
-        mService = Common.getGoogleApi();
-    }
 
-    private void initialize() {
-        Toast.makeText(FindBusActivity.this, "  initialxe", Toast.LENGTH_SHORT).show();
 
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("Drivers").child("Driver1");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Toast.makeText(FindBusActivity.this, "  snapshot", Toast.LENGTH_SHORT).show();
+
                 if (dataSnapshot.getValue() != null) {
+                    admin = dataSnapshot.getValue(Admin.class);
                     lat = Double.valueOf((String)dataSnapshot.child("lat").getValue());
                     lng = Double.valueOf((String)dataSnapshot.child("lng").getValue());
-                    Toast.makeText(FindBusActivity.this, "  dataaaaaaaa"+lat, Toast.LENGTH_SHORT).show();
-
                     displayLocation();
 
                 }else {
@@ -169,18 +149,31 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
 
                 }
 
-                }
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(FindBusActivity.this, "  cn", Toast.LENGTH_SHORT).show();
-
-
             }
-
-
         });
-        Toast.makeText(FindBusActivity.this, "  ses", Toast.LENGTH_SHORT).show();
+
+
+
+        polyLineList = new ArrayList<>();
+//        //Geo Fire
+        dbref = FirebaseDatabase.getInstance().getReference("Drivers");
+        geoFire = new GeoFire(dbref);
+        mService = Common.getGoogleApi();
+    }
+
+    private void initialize() {
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_frag_findbus);
+        tvDriverContract = (TextView)findViewById(R.id.tv_findbus_driver_contract);
+        mapFragment.getMapAsync(this);
+//        Init View
+        location_switch = (MaterialAnimatedSwitch)findViewById(R.id.fundbus_locationSwitch);
+
+         databaseReference= FirebaseDatabase.getInstance().getReference().child("Admin").child(selectedBusUserId);
 
 
     }
@@ -247,7 +240,7 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
 
 
     private void getDirection() {
-        currentPosition = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+        currentPosition = new LatLng(lat,lng);
 
         String requestApi = null;
         try {
@@ -381,49 +374,17 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case MY_PERMISSION_REQUEST_CODE:
-                if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    if(checkPlayServices()){
-                        // buildGoogleApiClient();
-                        createLocationRequest();
-                        if(location_switch.isChecked()){
-                            displayLocation();
-                        }
-                    }
-                }
-
-        }
+        displayLocation();
     }
 
 
 
 
-    private void setUpLocation() {
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION )!= PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION )!= PackageManager.PERMISSION_GRANTED){
-//            //Request runtime
-            ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-            },MY_PERMISSION_REQUEST_CODE);
-        }
-        else {
-            if(checkPlayServices()){
-                //buildGoogleApiClient();
-                createLocationRequest();
-                if(location_switch.isChecked()){
-                    displayLocation();
-                }
-            }
-        }
-    }
 
 
 
 
-    private void createLocationRequest() {
-    }
+
 
 
 
@@ -439,22 +400,6 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
 
 
 
-
-    private boolean checkPlayServices() {
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if(resultCode != ConnectionResult.SUCCESS){
-            if(GooglePlayServicesUtil.isUserRecoverableError(resultCode)){
-//                Getting Error Dialogue----------------------------------------------------------------------------------------------------------
-                GooglePlayServicesUtil.getErrorDialog(resultCode,this, PLAY_SERVICE_RES_REQUEST).show();
-            }
-            else{
-                Toast.makeText(getApplicationContext(),"Opps!! Device is not compatible",Toast.LENGTH_SHORT).show();
-                finish();
-            }
-            return false;
-        }
-        return true;
-    }
 
 
 
@@ -538,19 +483,10 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     protected void onStart() {
         super.onStart();
-        //Intent intent = new Intent(this, LocationService.class);
-        //startService(intent);
+//        Intent intent = new Intent(this, LocationService.class);
+//        startService(intent);
     }
 
-    private void startLocationUpdates() {
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION )!= PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION )!= PackageManager.PERMISSION_GRANTED){
-//                            Log.d("startLocationUpdates 1","poooooooo--------------------------------------------"); Not working
-            return;
-        }
-        // LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest,this);
-//                                    Log.d("startLocationUpdates 2","poooooooo--------------------------------------------");  Working
-    }
 
 
 
@@ -566,39 +502,177 @@ public class FindBusActivity extends AppCompatActivity implements OnMapReadyCall
 
 
 
-
+    /**
+     * For inflating menu
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_routes,menu);
+        return true;
+    }
 
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
+
+            //Route 1
             case R.id.route1Bus1Id:
                 selectedBusUserId = Constants.route1bus1id;
                 updateMap();
                 return true;
             case R.id.route1Bus2Id:
-                // do your code
+                selectedBusUserId = Constants.route1bus2id;
+                updateMap();
                 return true;
             case R.id.route1Bus3Id:
-                // do your code
+                selectedBusUserId = Constants.route1bus3id;
+                updateMap();
                 return true;
             case R.id.route1Bus4Id:
-                // do your code
+                selectedBusUserId = Constants.route1bus4id;
+                updateMap();
                 return true;
             case R.id.route1Bus5Id:
-                // do your code
+                selectedBusUserId = Constants.route1bus5id;
+                updateMap();
                 return true;
+
+                //Route 2
             case R.id.route2Bus1Id:
-                // do your code
+                selectedBusUserId = Constants.route2bus1id;
+                updateMap();
                 return true;
+            case R.id.route2Bus2Id:
+                selectedBusUserId = Constants.route2bus2id;
+                updateMap();
+                return true;
+            case R.id.route2Bus3Id:
+                selectedBusUserId = Constants.route2bus3id;
+                updateMap();
+                return true;
+            case R.id.route2Bus4Id:
+                selectedBusUserId = Constants.route2bus4id;
+                updateMap();
+                return true;
+            case R.id.route2Bus5Id:
+                selectedBusUserId = Constants.route2bus5id;
+                updateMap();
+                return true;
+
+            //Route 3
+            case R.id.route3Bus1Id:
+                selectedBusUserId = Constants.route3bus1id;
+                updateMap();
+                return true;
+            case R.id.route3Bus2Id:
+                selectedBusUserId = Constants.route3bus2id;
+                updateMap();
+                return true;
+            case R.id.route3Bus3Id:
+                selectedBusUserId = Constants.route3bus3id;
+                updateMap();
+                return true;
+            case R.id.route3Bus4Id:
+                selectedBusUserId = Constants.route3bus4id;
+                updateMap();
+                return true;
+            case R.id.route3Bus5Id:
+                selectedBusUserId = Constants.route3bus5id;
+                updateMap();
+                return true;
+
+            //Route 4
+            case R.id.route4Bus1Id:
+                selectedBusUserId = Constants.route4bus1id;
+                updateMap();
+                return true;
+            case R.id.route4Bus2Id:
+                selectedBusUserId = Constants.route4bus2id;
+                updateMap();
+                return true;
+            case R.id.route4Bus3Id:
+                selectedBusUserId = Constants.route4bus3id;
+                updateMap();
+                return true;
+            case R.id.route4Bus4Id:
+                selectedBusUserId = Constants.route4bus4id;
+                updateMap();
+                return true;
+            case R.id.route4Bus5Id:
+                selectedBusUserId = Constants.route4bus5id;
+                updateMap();
+                return true;
+
+            //Route 5
+            case R.id.route5Bus1Id:
+                selectedBusUserId = Constants.route5bus1id;
+                updateMap();
+                return true;
+            case R.id.route5Bus2Id:
+                selectedBusUserId = Constants.route5bus2id;
+                updateMap();
+                return true;
+            case R.id.route5Bus3Id:
+                selectedBusUserId = Constants.route5bus3id;
+                updateMap();
+                return true;
+            case R.id.route5Bus4Id:
+                selectedBusUserId = Constants.route5bus4id;
+                updateMap();
+                return true;
+            case R.id.route5Bus5Id:
+                selectedBusUserId = Constants.route5bus5id;
+                updateMap();
+                return true;
+
+
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
     private void updateMap() {
-        Toast.makeText(this, "update map from "+selectedBusUserId, Toast.LENGTH_SHORT).show();
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("Admin").child(selectedBusUserId);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Toast.makeText(FindBusActivity.this, "  snapshot2", Toast.LENGTH_SHORT).show();
+
+                if (dataSnapshot.getValue() != null) {
+                    admin = dataSnapshot.getValue(Admin.class);
+                    Log.d("popo",""+dataSnapshot.toString());
+                    Log.d("popo",""+admin.toString());
+
+
+                    if(!(admin.getLat().isEmpty() && admin.getLng().isEmpty())) {
+                        Log.d("popop",""+admin.toString());
+                        lat = Double.valueOf(admin.getLat());
+                        lng = Double.valueOf(admin.getLng());
+                        displayLocation();
+                    }else{
+                        Toast.makeText(FindBusActivity.this, "Driver Location off"+dataSnapshot.toString(), Toast.LENGTH_SHORT).show();
+                        Log.d("popo",""+dataSnapshot.toString());
+                    }
+
+                }else {
+                    Toast.makeText(FindBusActivity.this, "  null", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        tvDriverContract.setText(admin.getPhone());
+        Toast.makeText(this, "update map from "+selectedBusUserId+ admin.getPhone(), Toast.LENGTH_SHORT).show();
     }
 
 }
