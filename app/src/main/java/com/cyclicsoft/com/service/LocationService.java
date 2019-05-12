@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -29,6 +30,10 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -105,7 +110,7 @@ public class LocationService extends Service implements LocationListener, Google
         databaseReference = firebaseDatabase.getReference("busses");
 
        getLocation();
-        Log.d("ppp","start"+latitude);
+        Log.d("popop","start"+latitude);
 
 
         return super.onStartCommand(intent, flags, startId);
@@ -361,8 +366,26 @@ public class LocationService extends Service implements LocationListener, Google
 
     @Override
     public void onLocationChanged(Location location) {
+
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Admin").child("Admin11");
+        dbref.child("lat")
+                .setValue(String.valueOf(location.getLatitude()))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG,"success");
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG,"fail");
+
+                    }
+                });
         this.location = location ;
-        Log.d("ppp","changed"+latitude);
+        Log.d(TAG,"changed"+latitude);
 
 
 

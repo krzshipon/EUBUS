@@ -26,10 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AdminRegActivity extends AppCompatActivity {
     //LinearLayout rootLayout;
     LinearLayout adminRegLayout;
-    EditText edtName, edtPhone, edtPassword,edtMail;
-    FirebaseAuth auth;
+    EditText edtName, edtPhone, edtPassword,edtMail, edtID;
     FirebaseDatabase db;
-    DatabaseReference users;
+    DatabaseReference admins;
     Button adminRegBtn;
 
     @Override
@@ -38,18 +37,18 @@ public class AdminRegActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_reg);
 
         adminRegLayout = (LinearLayout)findViewById(R.id.adminRegLayout);
-        auth = FirebaseAuth.getInstance();
         db   = FirebaseDatabase.getInstance();
-        users= db.getReference("drivers2");
+        admins= db.getReference("Admin");
 
 
 
         edtName = (EditText)findViewById(R.id.edtName);
-          edtMail = (EditText)findViewById(R.id.edtMail);
-          edtPhone = (EditText)findViewById(R.id.edtPhone);
-          edtPassword = (EditText)findViewById(R.id.edtPassword);
+        edtMail = (EditText)findViewById(R.id.edtMail);
+        edtPhone = (EditText)findViewById(R.id.edtPhone);
+        edtPassword = (EditText)findViewById(R.id.edtPassword);
+        edtID =(EditText) findViewById(R.id.edtId);
 
-          adminRegBtn = (Button)findViewById(R.id.adminRegBtn);
+        adminRegBtn = (Button)findViewById(R.id.adminRegBtn);
 
         adminRegBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -104,14 +103,16 @@ public class AdminRegActivity extends AppCompatActivity {
                 }
 
                 Admin admin = new Admin();
-                admin.setaID(edtName.getText().toString());
+                admin.setaID(edtID.getText().toString());
+                admin.setPassword(edtPassword.getText().toString());
                 admin.setaEmail(edtMail.getText().toString());
                 admin.setaName(edtName.getText().toString());
+                admin.setPhone(edtPhone.getText().toString());
                 admin.setLat("");
                 admin.setLng("");
 
 
-                users.child(admin.getaName()).setValue(admin)
+                admins.child(admin.getaID()).setValue(admin)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {

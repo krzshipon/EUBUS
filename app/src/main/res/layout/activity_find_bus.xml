@@ -6,7 +6,6 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:layout_below="@+id/layout_panel"
         android:id="@+id/map_frag_findbus"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
@@ -38,12 +37,13 @@
                 />
             <!--app:icon_release="@drawable/ic_location_off_black_24dp"-->
             <!--app:icon_press="@drawable/ic_location_on_black_24dp"-->
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:id="@+id/tv_find_user"-->
-                <!--android:text="Find User"-->
-                <!--android:layout_marginLeft="100dp"/>-->
+
+            <TextView
+                android:id="@+id/tv_findbus_driver_contract"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01711-******"
+                android:layout_marginLeft="50dp"/>
         </LinearLayout>
 
 

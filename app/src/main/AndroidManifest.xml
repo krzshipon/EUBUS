@@ -45,7 +45,7 @@
         <activity android:name=".acitivity.Test_Activity" />
         <activity android:name=".acitivity.AdminRegActivity" />
         <activity android:name=".acitivity.DeveloperInfoActivity" />
-        <activity android:name=".acitivity.AdminActivity" />
+        <activity android:name=".acitivity.AdminLoginActivity" />
         <activity android:name=".acitivity.FindBusActivity" />
         <activity android:name=".acitivity.MainActivity">
             <intent-filter>
